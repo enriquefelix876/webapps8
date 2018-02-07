@@ -1,0 +1,18 @@
+<table>
+	<tr>
+		<td><b>Horas extras:</b></td>
+		<td><?php echo $he; ?></td>
+	</tr>
+	<tr>
+		<td><b>Ingreso por hora normal:</b></td>
+		<td><?php echo $ingreso_n; ?></td>
+	</tr>
+	<tr>
+		<td><b>Ingreso por hora extra:</b></td>
+		<td><?php echo $ingreso_e; ?></td>
+	</tr>
+	<tr>
+		<td><b>Total:</b></td>
+		<td><?php echo $total; ?></td>
+	</tr>
+</table>

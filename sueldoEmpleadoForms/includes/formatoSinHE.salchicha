@@ -1,0 +1,10 @@
+<table>
+	<tr>
+		<td><b>Ingreso por hora normal:</b></td>
+		<td><?php echo $total; ?></td>
+	</tr>
+	<tr>
+		<td><b>Total:</b></td>
+		<td><?php echo $total; ?></td>
+	</tr>
+</table>
