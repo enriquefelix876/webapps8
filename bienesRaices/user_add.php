@@ -34,6 +34,44 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
   <h2>User add</h2>
   <p>Use the form below to add a new user.</p>
 
+  <form action="user_add.php" method="post">
+  	<table>
+  		<tr>
+  			<td><label for="nombre">First name:</label></td>
+  			<td><input type="text" name="nombre" /></td>
+  		</tr>
+  		<tr>
+  			<td><label for="apellidos">Last name:</label></td>
+  			<td><input type="text" name="apellidos" /></td>
+  		</tr>
+  		<tr>
+  			<td><label for="email">Email:</label></td>
+  			<td><input type="text" name="email" /></td>
+  		</tr>
+  		<tr>
+  			<td><label for="telefono">Telephone:</label></td>
+  			<td><input type="text" name="telefono" /></td>
+  		</tr>
+  		<tr>
+  			<td><label for="password">Password:</label></td>
+  			<td><input type="password" name="password" /></td>
+  		</tr>
+  		<tr>
+  			<td><label for="role">Role:</label></td>
+  			<td>
+  				<select name="role" id="role">
+  					<option value="agent" selected="selected">Agent</option>
+  					<option value="admin">Administrator</option>
+  				</select>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><br /><input type="submit" value="Register user" name="sent" /></td>
+  		</tr>
+  	</table>
+  </form>
+
 </div>
 
 <!--CONTENT END -->
