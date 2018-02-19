@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<?php
+include('conexiones/conexionLocalhost.php');
+
+//Evaluamos que el formulario ha sido enviado
+if(isset($_POST['sent'])) {
+
+  //Verificamos si existen campos vacios
+  foreach($_POST as $calzon => $caca) {
+    if($caca == "") $error[] = "El campo $calzon es opbligatorio";
+  }
+
+}
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -31,6 +45,7 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
 </div>
 
 <div id="content" class="txt_content">
+  <?php echo $conexionLocalhost; ?>
   <h2>User add</h2>
   <p>Use the form below to add a new user.</p>
 
