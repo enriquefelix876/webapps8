@@ -1,12 +1,15 @@
 ﻿<?php
 include('conexiones/conexionLocalhost.php');
+include('includes/codigoComun.php');
 
 //Evaluamos que el formulario ha sido enviado
 if(isset($_POST['sent'])) {
 
   //Verificamos si existen campos vacios
   foreach($_POST as $calzon => $caca) {
-    if($caca == "") $error[] = "El campo $calzon es opbligatorio";
+    if($calzon != "telefono") {
+      if($caca == "") $error[] = "The field $calzon is required";
+    }
   }
 
 }
@@ -45,9 +48,9 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
 </div>
 
 <div id="content" class="txt_content">
-  <?php echo $conexionLocalhost; ?>
   <h2>User add</h2>
   <p>Use the form below to add a new user.</p>
+  <?php printMsg($error,"error"); ?>
 
   <form action="user_add.php" method="post">
   	<table>
