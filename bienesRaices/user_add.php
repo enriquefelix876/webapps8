@@ -50,25 +50,25 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
 <div id="content" class="txt_content">
   <h2>User add</h2>
   <p>Use the form below to add a new user.</p>
-  <?php printMsg($error,"error"); ?>
+  <?php if(isset($error)) printMsg($error,"error"); ?>
 
   <form action="user_add.php" method="post">
   	<table>
   		<tr>
   			<td><label for="nombre">First name:</label></td>
-  			<td><input type="text" name="nombre" /></td>
+  			<td><input type="text" name="nombre" <?php if(isset($_POST['nombre'])) echo 'value="'.$_POST['nombre'].'"'; ?> /></td>
   		</tr>
   		<tr>
   			<td><label for="apellidos">Last name:</label></td>
-  			<td><input type="text" name="apellidos" /></td>
+  			<td><input type="text" name="apellidos" <?php if(isset($_POST['apellidos'])) echo 'value="'.$_POST['apellidos'].'"'; ?> /></td>
   		</tr>
   		<tr>
   			<td><label for="email">Email:</label></td>
-  			<td><input type="text" name="email" /></td>
+  			<td><input type="text" name="email" <?php if(isset($_POST['email'])) echo 'value="'.$_POST['email'].'"'; ?> /></td>
   		</tr>
   		<tr>
   			<td><label for="telefono">Telephone:</label></td>
-  			<td><input type="text" name="telefono" /></td>
+  			<td><input type="text" name="telefono" <?php if(isset($_POST['telefono'])) echo 'value="'.$_POST['telefono'].'"'; ?> /></td>
   		</tr>
   		<tr>
   			<td><label for="password">Password:</label></td>
