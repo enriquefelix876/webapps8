@@ -2,14 +2,37 @@
 include('conexiones/conexionLocalhost.php');
 include('includes/codigoComun.php');
 
-//Evaluamos que el formulario ha sido enviado
+// Evaluamos que el formulario ha sido enviado
 if(isset($_POST['sent'])) {
 
-  //Verificamos si existen campos vacios
+  // Verificamos si existen campos vacios
   foreach($_POST as $calzon => $caca) {
     if($calzon != "telefono") {
       if($caca == "") $error[] = "The field $calzon is required";
     }
+  }
+
+  // Solamente ejecutar la transacción en la base de datos cuando estamos libre de errores
+  if(!isset($error)) {
+
+    // Definir el query a ejecutar
+    $queryUserAdd = sprintf("INSERT INTO tblUsuarios (nombre, apellidos, email, password, telefono, rol) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+      mysql_real_escape_string(trim($_POST['nombre'])),
+      mysql_real_escape_string(trim($_POST['apellidos'])),
+      mysql_real_escape_string(trim($_POST['email'])),
+      mysql_real_escape_string(trim($_POST['password'])),
+      mysql_real_escape_string(trim($_POST['telefono'])),
+      mysql_real_escape_string(trim($_POST['rol']))
+    );
+
+    // Ejecutamos el query
+    $resQueryUserAdd = mysql_query($queryUserAdd, $conexionLocalhost) or die("We're sorry but the query for registering new users wasn't executed");
+
+    // Si todo salio bien, redirigimos al usuario al panel de control
+    if($resQueryUserAdd) {
+      header("Location: cpanel.php?registerUser=true");
+    }
+
   }
 
 }
@@ -77,7 +100,7 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
   		<tr>
   			<td><label for="role">Role:</label></td>
   			<td>
-  				<select name="role" id="role">
+  				<select name="rol" id="rol">
   					<option value="agent" selected="selected">Agent</option>
   					<option value="admin">Administrator</option>
   				</select>
