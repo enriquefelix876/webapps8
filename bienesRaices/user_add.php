@@ -12,6 +12,11 @@ if(isset($_POST['sent'])) {
     }
   }
 
+  // Verificamos que los password sean coincidentes
+  if($_POST['password'] != $_POST['password2']) {
+    $error[] = "The password doesn't match";
+  }
+
   // Solamente ejecutar la transacción en la base de datos cuando estamos libre de errores
   if(!isset($error)) {
 
@@ -97,8 +102,12 @@ function MM_jumpMenuGo(objId,targ,restore){ //v9.0
   			<td><label for="password">Password:</label></td>
   			<td><input type="password" name="password" /></td>
   		</tr>
+      <tr>
+        <td><label for="password2">Confirm password:</label></td>
+        <td><input type="password" name="password2" /></td>
+      </tr>
   		<tr>
-  			<td><label for="role">Role:</label></td>
+  			<td><label for="rol">Role:</label></td>
   			<td>
   				<select name="rol" id="rol">
   					<option value="agent" selected="selected">Agent</option>
