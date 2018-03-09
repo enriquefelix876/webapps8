@@ -17,6 +17,17 @@ if(isset($_POST['sent'])) {
     $error[] = "The password doesn't match";
   }
 
+  // Definir el query para buscar el email en la base de datos
+  $queryValidateEmail = sprintf("SELECT id FROM tblUsuarios WHERE email = '%s'",
+    mysql_real_escape_string(trim($_POST['email']))
+  );
+
+  // Ejecutar el query
+  $resQueryValidateEmail = mysql_query($queryValidateEmail, $conexionLocalhost) or die("The query for searching the email wasn't executed");
+
+  // Contamos el numero de registros que devuelve la consulta y en caso de existir un registro generamos un error de email utilizado
+  if(mysql_num_rows($resQueryValidateEmail)) $error[] = "The given email is already in use, please use another one";
+
   // Solamente ejecutar la transacción en la base de datos cuando estamos libre de errores
   if(!isset($error)) {
 
